@@ -1,0 +1,62 @@
+<%= form_with(model: order, local: true) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :order_type %>
+    <%= form.number_field :order_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :odds_type %>
+    <%= form.number_field :odds_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :invested_amount %>
+    <%= form.text_field :invested_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :invested_amount %>
+    <%= form.text_field :invested_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :refund_amount %>
+    <%= form.text_field :refund_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :refund_amount %>
+    <%= form.text_field :refund_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result_type %>
+    <%= form.number_field :result_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :game_id %>
+    <%= form.number_field :game_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :learning %>
+    <%= form.text_area :learning %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

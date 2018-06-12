@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  order_type: 1
+  odds_type: 1
+  invested_amount: 
+  invested_amount: 
+  refund_amount: 
+  refund_amount: 
+  result_type: 1
+  game_id: 1
+  learning: MyText
+
+two:
+  order_type: 1
+  odds_type: 1
+  invested_amount: 
+  invested_amount: 
+  refund_amount: 
+  refund_amount: 
+  result_type: 1
+  game_id: 1
+  learning: MyText
