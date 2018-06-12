@@ -23,6 +23,20 @@
               <input type="text" name="venue[name]" id="name" required="required" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
+
+          <div class="form-group">
+            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Country</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+            <select id="country" name="venue[country]"class="form-control" required>
+              <option value="">Choose Country</option>
+              <% @countries.each do |k,v| %>
+                <option value=<%= k %>> <%= v %></option>
+              <% end %>
+            </select>              
+            </div>
+          </div>
+
+
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">City <span class="required">*</span>
             </label>
@@ -30,12 +44,7 @@
               <input type="text" id="city" name="venue[city]" required="required" class="form-control col-md-7 col-xs-12">
             </div>
           </div>
-          <div class="form-group">
-            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Country</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="country" class="form-control col-md-7 col-xs-12" type="text" name="venue[country]">
-            </div>
-          </div>
+
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Ground Size</label>
             <div class="col-md-6 col-sm-6 col-xs-12">

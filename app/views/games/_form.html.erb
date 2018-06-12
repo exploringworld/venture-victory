@@ -1,0 +1,141 @@
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <br />
+        <%= form_with(model: game, local: true, id: 'demo-form2', class: 'form-horizontal form-label-left') do |form| %>
+          <% if game.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+              <ul>
+              <% game.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>        
+          <div class="form-group">
+            <label class="control-label col-xs-3" for="first-name">Series <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" name="game[series]" id="series" required="required" class="form-control col-md-7 col-xs-12">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Venue <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="venue" name="game[venue]" required="required" class="form-control col-md-7 col-xs-12">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">First Team</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="first_team" class="form-control col-md-7 col-xs-12" type="text" name="game[first_team]">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Second Team</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="second_team" class="form-control col-md-7 col-xs-12" type="text" name="game[second_team]">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Home Team</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="home_team" class="form-control col-md-7 col-xs-12" type="text" name="game[home_team]">
+            </div>
+          </div>   
+
+
+          <div class="form-group">
+            <label for="first_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">First Team Score</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="first_team_score" class="form-control col-md-7 col-xs-12" type="number" name="game[first_team_score]">
+            </div>
+          </div>   
+          
+          <div class="form-group">
+            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Second Team Score</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="second_team_score" class="form-control col-md-7 col-xs-12" type="number" name="game[second_team_score]">
+            </div>
+          </div>  
+          
+
+          <div class="form-group">
+            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">First Team Fours</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="first_inning_fours" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_fours]">
+            </div>
+          </div>  
+          
+
+          <div class="form-group">
+            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Second Team Fours</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="second_inning_fours" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_fours]">
+            </div>
+          </div>  
+
+          <div class="form-group">
+            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">First Team Sixes</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="first_inning_sixes" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_sixes]">
+            </div>
+          </div>  
+
+          <div class="form-group">
+            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Second Team Sixes</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="second_inning_sixes" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_sixes]">
+            </div>
+          </div>  
+
+
+          <div class="form-group">
+            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">First Team Wickets</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="first_inning_wickets" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_wickets]">
+            </div>
+          </div>  
+
+          <div class="form-group">
+            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Second Team Wickets</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="second_inning_wickets" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_wickets]">
+            </div>
+          </div>  
+
+          <div class="form-group">
+            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Result</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="result" class="form-control col-md-7 col-xs-12" type="text" name="game[result]">
+            </div>
+          </div>   
+
+          <div class="form-group">
+            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Winning Team</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="winning_team" class="form-control col-md-7 col-xs-12" type="text" name="game[winning_team]">
+            </div>
+          </div> 
+
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+              <button class="btn btn-primary" type="button">Cancel</button>
+              <button class="btn btn-primary" type="reset">Reset</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

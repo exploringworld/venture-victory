@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  series_id: 1
+  venue_id: 1
+  match_type: 1
+  first_team: 1
+  second_team: 1
+  home_team: 1
+  first_team_score: 1
+  second_team_score: 1
+  first_inning_fours: 1
+  second_inning_fours: 1
+  first_inning_sixes: 1
+  second_inning_sixes: 1
+  first_inning_wickets: 1
+  second_inning_wickets: 1
+  result: MyText
+  winning_team: 1
+
+two:
+  series_id: 1
+  venue_id: 1
+  match_type: 1
+  first_team: 1
+  second_team: 1
+  home_team: 1
+  first_team_score: 1
+  second_team_score: 1
+  first_inning_fours: 1
+  second_inning_fours: 1
+  first_inning_sixes: 1
+  second_inning_sixes: 1
+  first_inning_wickets: 1
+  second_inning_wickets: 1
+  result: MyText
+  winning_team: 1

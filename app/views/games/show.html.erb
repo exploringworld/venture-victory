@@ -1,0 +1,84 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Series:</strong>
+  <%= @game.series_id %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @game.venue_id %>
+</p>
+
+<p>
+  <strong>Match type:</strong>
+  <%= @game.match_type %>
+</p>
+
+<p>
+  <strong>First team:</strong>
+  <%= @game.first_team %>
+</p>
+
+<p>
+  <strong>Second team:</strong>
+  <%= @game.second_team %>
+</p>
+
+<p>
+  <strong>Home team:</strong>
+  <%= @game.home_team %>
+</p>
+
+<p>
+  <strong>First team score:</strong>
+  <%= @game.first_team_score %>
+</p>
+
+<p>
+  <strong>Second team score:</strong>
+  <%= @game.second_team_score %>
+</p>
+
+<p>
+  <strong>First inning fours:</strong>
+  <%= @game.first_inning_fours %>
+</p>
+
+<p>
+  <strong>Second inning fours:</strong>
+  <%= @game.second_inning_fours %>
+</p>
+
+<p>
+  <strong>First inning sixes:</strong>
+  <%= @game.first_inning_sixes %>
+</p>
+
+<p>
+  <strong>Second inning sixes:</strong>
+  <%= @game.second_inning_sixes %>
+</p>
+
+<p>
+  <strong>First inning wickets:</strong>
+  <%= @game.first_inning_wickets %>
+</p>
+
+<p>
+  <strong>Second inning wickets:</strong>
+  <%= @game.second_inning_wickets %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @game.result %>
+</p>
+
+<p>
+  <strong>Winning team:</strong>
+  <%= @game.winning_team %>
+</p>
+
+<%= link_to 'Edit', edit_game_path(@game) %> |
+<%= link_to 'Back', games_path %>

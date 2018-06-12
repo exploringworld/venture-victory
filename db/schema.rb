@@ -10,7 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_11_122056) do
+ActiveRecord::Schema.define(version: 2018_06_12_164839) do
+
+  create_table "games", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "series_id"
+    t.integer "venue_id"
+    t.integer "match_type"
+    t.integer "first_team"
+    t.integer "second_team"
+    t.integer "home_team"
+    t.integer "first_team_score"
+    t.integer "second_team_score"
+    t.integer "first_inning_fours"
+    t.integer "second_inning_fours"
+    t.integer "first_inning_sixes"
+    t.integer "second_inning_sixes"
+    t.integer "first_inning_wickets"
+    t.integer "second_inning_wickets"
+    t.text "result"
+    t.integer "winning_team"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "series", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "name"
+    t.date "start_date"
+    t.text "participant_teams"
+    t.integer "winner_team"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "teams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", limit: 300

@@ -15,10 +15,16 @@ class VenuesController < ApplicationController
   # GET /venues/new
   def new
     @venue = Venue.new
+    @countries = CS.countries    
   end
 
   # GET /venues/1/edit
   def edit
+    @countries = CS.countries
+  end
+
+  def get_cities
+    
   end
 
   # POST /venues
@@ -28,7 +34,7 @@ class VenuesController < ApplicationController
 
     respond_to do |format|
       if @venue.save
-        format.html { redirect_to @venue, notice: 'Venue was successfully created.' }
+        format.html { redirect_to venues_path, notice: 'Venue was successfully created.' }
         format.json { render :show, status: :created, location: @venue }
       else
         format.html { render :new }

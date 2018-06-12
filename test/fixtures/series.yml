@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  start_date: 2018-06-12
+  participant_teams: MyText
+  winner_team: 1
+
+two:
+  name: MyText
+  start_date: 2018-06-12
+  participant_teams: MyText
+  winner_team: 1
