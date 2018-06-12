@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Learnings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Validated times</th>
+      <th>Importance</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @learnings.each do |learning| %>
+      <tr>
+        <td><%= learning.name %></td>
+        <td><%= learning.description %></td>
+        <td><%= learning.validated_times %></td>
+        <td><%= learning.importance %></td>
+        <td><%= link_to 'Show', learning %></td>
+        <td><%= link_to 'Edit', edit_learning_path(learning) %></td>
+        <td><%= link_to 'Destroy', learning, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Learning', new_learning_path %>

@@ -5,3 +5,8 @@ rails g scaffold Order order_type:integer odds_type:integer invested_amount:deci
 add 6, 10, 20 overs run in t20 games for both first and second innings
 
 format form for orders (form and index page)
+format form for learnings (form and index page)
+
+
+
+rails g scaffold Learning name:text description:text validated_times:integer importance:integer

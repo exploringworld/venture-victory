@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @learning.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @learning.description %>
+</p>
+
+<p>
+  <strong>Validated times:</strong>
+  <%= @learning.validated_times %>
+</p>
+
+<p>
+  <strong>Importance:</strong>
+  <%= @learning.importance %>
+</p>
+
+<%= link_to 'Edit', edit_learning_path(@learning) %> |
+<%= link_to 'Back', learnings_path %>
