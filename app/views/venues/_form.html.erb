@@ -1,0 +1,67 @@
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <br />
+        <%= form_with(model: venue, local: true, id: 'demo-form2', class: 'form-horizontal form-label-left') do |form| %>
+          <% if venue.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+
+              <ul>
+              <% venue.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>        
+          <div class="form-group">
+            <label class="control-label col-xs-3" for="first-name">Name <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" name="venue[name]" id="name" required="required" class="form-control col-md-7 col-xs-12">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">City <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" id="city" name="venue[city]" required="required" class="form-control col-md-7 col-xs-12">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Country</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="country" class="form-control col-md-7 col-xs-12" type="text" name="venue[country]">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Ground Size</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div id="gender" class="btn-group" data-toggle="buttons">
+                <label class="btn" data-toggle-class="btn-primary" data-toggle-passive-class="">
+                  <input type="radio" name="venue[ground_size]" value="small"> &nbsp; Small &nbsp;
+                </label>
+                <label class="btn" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="venue[ground_size]" value="medium"> Medium
+                </label>
+                <label class="btn" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="venue[ground_size]" value="big"> Big
+                </label>                
+              </div>
+            </div>
+          </div>
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+              <button class="btn btn-primary" type="button">Cancel</button>
+              <button class="btn btn-primary" type="reset">Reset</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
