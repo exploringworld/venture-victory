@@ -15,10 +15,16 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
+    @series = Series.inprogress_series
+    @venues = Venue.all
+    @teams = Team.all
   end
 
   # GET /games/1/edit
   def edit
+    @series = Series.inprogress_series
+    @venues = Venue.all
+    @teams = Team.all    
   end
 
   # POST /games
