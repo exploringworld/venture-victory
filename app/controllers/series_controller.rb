@@ -15,10 +15,12 @@ class SeriesController < ApplicationController
   # GET /series/new
   def new
     @series = Series.new
+    @teams = Team.all.order(:category)
   end
 
   # GET /series/1/edit
   def edit
+    @teams = Team.all.order(:category)
   end
 
   # POST /series
@@ -69,6 +71,6 @@ class SeriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def series_params
-      params.require(:series).permit(:name, :start_date, :participant_teams, :winner_team)
+      params.require(:series).permit(:name, :start_date, :winner_team,participant_teams: [])
     end
 end

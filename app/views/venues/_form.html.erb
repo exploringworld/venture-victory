@@ -31,7 +31,7 @@
             <select id="country" name="venue[country]"class="form-control" required>
               <option value="">Choose Country</option>
               <% @countries.each do |k,v| %>
-                <option value=<%= k %> <% if k == venue.country.to_sym %> selected="selected" <% end %> > <%= v %></option>
+                <option value=<%= k %> <% if k == venue.country.try(:to_sym) %> selected="selected" <% end %> > <%= v %></option>
               <% end %>
             </select>              
             </div>
@@ -54,14 +54,14 @@
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Ground Size</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
               <div id="gender" class="btn-group" data-toggle="buttons">
-                <label class="btn" data-toggle-class="btn-primary" data-toggle-passive-class="">
-                  <input type="radio" name="venue[ground_size]" value="small" <% if venue.ground_size == 'small' %> checked="checked" <% end %> data-toggle-passive-class="btn-default"> &nbsp; Small &nbsp;
+                <label class="btn <% if venue.ground_size == 'small' %> btn-primary <% end %>" data-toggle-class="btn-primary" data-toggle-passive-class="">
+                  <input type="radio" name="venue[ground_size]" value="small" data-toggle-passive-class="btn-default"> &nbsp; Small &nbsp;
                 </label>
-                <label class="btn" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                  <input type="radio" name="venue[ground_size]" value="medium" <% if venue.ground_size == 'medium' %> checked="checked" <% end %>> Medium
+                <label class="btn <% if venue.ground_size == 'medium' %> btn-primary <% end %>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="venue[ground_size]" value="medium"> Medium
                 </label>
-                <label class="btn" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                  <input type="radio" name="venue[ground_size]" value="big" <% if venue.ground_size == 'big' %> checked="checked" <% end %>> Big
+                <label class="btn <% if venue.ground_size == 'big' %> btn-primary <% end %>" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="venue[ground_size]" value="big"> Big
                 </label>                
               </div>
             </div>
