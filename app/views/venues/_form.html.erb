@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'venues' %>
 <div class="clearfix"></div>
 <div class="row">
   <div class="col-md-12 col-sm-12 col-xs-12">
@@ -20,7 +21,7 @@
             <label class="control-label col-xs-3" for="first-name">Name <span class="required">*</span>
             </label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" name="venue[name]" id="name" required="required" class="form-control col-md-7 col-xs-12">
+              <input type="text" name="venue[name]" id="name" required="required" class="form-control col-md-7 col-xs-12" value="<%= venue.name %>">
             </div>
           </div>
 
@@ -30,7 +31,7 @@
             <select id="country" name="venue[country]"class="form-control" required>
               <option value="">Choose Country</option>
               <% @countries.each do |k,v| %>
-                <option value=<%= k %>> <%= v %></option>
+                <option value=<%= k %> <% if k == venue.country.to_sym %> selected="selected" <% end %> > <%= v %></option>
               <% end %>
             </select>              
             </div>
@@ -38,10 +39,14 @@
 
 
           <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">City <span class="required">*</span>
-            </label>
+            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">City</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input type="text" id="city" name="venue[city]" required="required" class="form-control col-md-7 col-xs-12">
+            <select id="city" name="venue[city]"class="form-control" required>
+              <option value="">Select City</option>
+              <% @cities.each do |city| %>
+                <option value=<%= city %> <% if city == venue.city %> selected="selected" <% end %>> <%= city %></option>
+              <% end %>
+            </select>              
             </div>
           </div>
 
@@ -50,13 +55,13 @@
             <div class="col-md-6 col-sm-6 col-xs-12">
               <div id="gender" class="btn-group" data-toggle="buttons">
                 <label class="btn" data-toggle-class="btn-primary" data-toggle-passive-class="">
-                  <input type="radio" name="venue[ground_size]" value="small"> &nbsp; Small &nbsp;
+                  <input type="radio" name="venue[ground_size]" value="small" <% if venue.ground_size == 'small' %> checked="checked" <% end %> data-toggle-passive-class="btn-default"> &nbsp; Small &nbsp;
                 </label>
-                <label class="btn" data-toggle-class="" data-toggle-passive-class="btn-default">
-                  <input type="radio" name="venue[ground_size]" value="medium"> Medium
+                <label class="btn" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="venue[ground_size]" value="medium" <% if venue.ground_size == 'medium' %> checked="checked" <% end %>> Medium
                 </label>
-                <label class="btn" data-toggle-class="" data-toggle-passive-class="btn-default">
-                  <input type="radio" name="venue[ground_size]" value="big"> Big
+                <label class="btn" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="venue[ground_size]" value="big" <% if venue.ground_size == 'big' %> checked="checked" <% end %>> Big
                 </label>                
               </div>
             </div>

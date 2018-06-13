@@ -15,16 +15,27 @@ class VenuesController < ApplicationController
   # GET /venues/new
   def new
     @venue = Venue.new
-    @countries = CS.countries    
+    @countries = CS.countries
+    @cities = []    
   end
 
   # GET /venues/1/edit
   def edit
     @countries = CS.countries
+    @cities = CS.states(@venue.country).keys.flat_map { |state| CS.cities(state, @venue.country) }   
   end
 
   def get_cities
-    
+    if params[:country].present?
+      @cities = CS.states(params[:country_code]).keys.flat_map { |state| CS.cities(state, params[:country_code]) }
+    end
+    if request.xhr?
+      respond_to do |format|
+        format.json {
+          render json: {cities: @cities}
+        }
+      end
+    end    
   end
 
   # POST /venues

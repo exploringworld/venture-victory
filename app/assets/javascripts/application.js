@@ -16,3 +16,4 @@
 //= require turbolinks
 //= require gentelella
 //= require gentelella-custom
+//= require venture_victory

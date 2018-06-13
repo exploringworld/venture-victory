@@ -10,3 +10,14 @@ format form for learnings (form and index page)
 
 
 rails g scaffold Learning name:text description:text validated_times:integer importance:integer
+
+
+create login page -- very important
+
+
+create date wise profit/ loss page
+create month wise profit/ loss page
+
+
+start reading about data analysis
+
