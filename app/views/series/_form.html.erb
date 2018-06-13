@@ -52,6 +52,14 @@
               </select>
             </div>
           </div>
+
+          <div class="checkbox">
+            <label>
+              <% puts series.completed %>
+              <% puts "sumit" %>
+              <input type="checkbox" name="series[completed]" value=1 <% if series.completed %> checked='checked' <% end %>> Series Completed
+            </label>
+          </div>          
               
           <div class="ln_solid"></div>
           <div class="form-group">

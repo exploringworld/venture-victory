@@ -42,6 +42,7 @@ class SeriesController < ApplicationController
   # PATCH/PUT /series/1
   # PATCH/PUT /series/1.json
   def update
+    byebug
     respond_to do |format|
       if @series.update(series_params)
         format.html { redirect_to @series, notice: 'Series was successfully updated.' }
@@ -71,6 +72,6 @@ class SeriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def series_params
-      params.require(:series).permit(:name, :start_date, :winner_team,participant_teams: [])
+      params.require(:series).permit(:name, :start_date, :winner_team, :completed, participant_teams: [])
     end
 end
