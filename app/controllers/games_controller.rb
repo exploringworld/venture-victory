@@ -75,6 +75,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:series_id, :venue_id, :match_type, :first_team, :second_team, :home_team, :first_team_score, :second_team_score, :first_inning_fours, :second_inning_fours, :first_inning_sixes, :second_inning_sixes, :first_inning_wickets, :second_inning_wickets, :result, :winning_team, :first_inning_six_over_runs, :first_inning_ten_over_runs, :first_inning_twenty_over_runs, :first_inning_wides, :first_inning_extras, :second_inning_six_over_runs, :second_inning_ten_over_runs, :second_inning_twenty_over_runs, :second_inning_wides, :second_inning_extras,:game_type)
+      params.require(:game).permit(:series_id, :venue_id, :match_type, :first_team, :second_team, :home_team, :first_team_score, :second_team_score, :first_inning_fours, :second_inning_fours, :first_inning_sixes, :second_inning_sixes, :first_inning_wickets, :second_inning_wickets, :result, :winning_team, :first_inning_six_over_runs, :first_inning_ten_over_runs, :first_inning_twenty_over_runs, :first_inning_wides, :first_inning_extras, :second_inning_six_over_runs, :second_inning_ten_over_runs, :second_inning_twenty_over_runs, :second_inning_wides, :second_inning_extras,:game_type,:first_inning_thirty_over_runs,:first_inning_forty_over_runs,:first_inning_fifty_over_runs,:second_inning_thirty_over_runs,:second_inning_forty_over_runs,:second_inning_fifty_over_runs)
     end
 end
