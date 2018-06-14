@@ -34,7 +34,7 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.save
-        format.html { redirect_to @game, notice: 'Game was successfully created.' }
+        format.html { redirect_to games_path, notice: 'Game was successfully created.' }
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new }
@@ -48,7 +48,7 @@ class GamesController < ApplicationController
   def update
     respond_to do |format|
       if @game.update(game_params)
-        format.html { redirect_to @game, notice: 'Game was successfully updated.' }
+        format.html { redirect_to games_path, notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
         format.html { render :edit }
@@ -75,6 +75,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params.require(:game).permit(:series_id, :venue_id, :match_type, :first_team, :second_team, :home_team, :first_team_score, :second_team_score, :first_inning_fours, :second_inning_fours, :first_inning_sixes, :second_inning_sixes, :first_inning_wickets, :second_inning_wickets, :result, :winning_team)
+      params.require(:game).permit(:series_id, :venue_id, :match_type, :first_team, :second_team, :home_team, :first_team_score, :second_team_score, :first_inning_fours, :second_inning_fours, :first_inning_sixes, :second_inning_sixes, :first_inning_wickets, :second_inning_wickets, :result, :winning_team, :first_inning_six_over_runs, :first_inning_ten_over_runs, :first_inning_twenty_over_runs, :first_inning_wides, :first_inning_extras, :second_inning_six_over_runs, :second_inning_ten_over_runs, :second_inning_twenty_over_runs, :second_inning_wides, :second_inning_extras,:game_type)
     end
 end

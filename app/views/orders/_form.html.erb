@@ -1,62 +1,150 @@
-<%= form_with(model: order, local: true) do |form| %>
-  <% if order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <br />
+        <%= form_with(model: order, local: true, id: 'demo-form2', class: 'form-horizontal form-label-left') do |form| %>
+        <% if order.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
 
-      <ul>
-      <% order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+            <ul>
+            <% order.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>        
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Game</label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <select class="select2_multiple form-control" name="order[game_id]" id="game_id">
+                <option value=""> Select Game </option>
+                <% @games.each do |game| %>
+                  <option value=<%= game.id %> <% if game.id == order.game_id %> selected="selected" <% end %> > <%= game.name %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Order Type</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div id="order_type" class="btn-group" data-toggle="buttons">
+                <label class="btn <% if order.order_type == 'teams' %> btn-primary <% end %>" data-toggle-class="btn-primary" data-toggle-passive-class="">
+                  <input type="radio" name="order[order_type]" value="teams"> &nbsp; Team Result &nbsp;
+                </label>
+                <label class="btn <% if order.order_type == 'not_session' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="order[order_type]" value="not_session"> Not Session
+                </label>  
+
+                <label class="btn <% if order.order_type == 'yes_session' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="order[order_type]" value="yes_session"> Yes Session
+                </label> 
+                <label class="btn <% if order.order_type == 'player_performance' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="order[order_type]" value="player_performance"> Player Performance
+                </label> 
+
+                <label class="btn <% if order.order_type == 'extra_runs' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="order[order_type]" value="extra_runs"> Extra Runs
+                </label> 
+
+                <label class="btn <% if order.order_type == 'total_sixes' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="order[order_type]" value="total_sixes"> Total 6s
+                </label> 
+
+                <label class="btn <% if order.order_type == 'total_fours' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="order[order_type]" value="total_fours"> Total 4s
+                </label> 
+
+                <label class="btn <% if order.order_type == 'total_wickets' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="order[order_type]" value="total_wickets"> Total Wickets
+                </label> 
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Odds Type</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div id="odds_type" class="btn-group" data-toggle="buttons">
+                <label class="btn <% if order.odds_type == 'favourite' %> btn-primary <% end %>" data-toggle-class="btn-primary" data-toggle-passive-class="">
+                  <input type="radio" name="order[odds_type]" value="favourite"> &nbsp; Favourite &nbsp;
+                </label>
+                <label class="btn <% if order.odds_type == 'underdog' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="order[odds_type]" value="underdog"> Underdog
+                </label>               
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-xs-3" for="first-name">Invested Amount <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" name="order[invested_amount]" id="invested_amount" required="required" class="form-control col-md-7 col-xs-12" value="<%= order.invested_amount %>">
+            </div>
+          </div>  
+          <div class="form-group">
+            <label class="control-label col-xs-3" for="first-name">Refund Amount <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" name="order[refund_amount]" id="refund_amount" required="required" class="form-control col-md-7 col-xs-12" value="<%= order.refund_amount %>">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="control-label col-xs-3" for="first-name">Description
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" name="order[description]" id="description" required="required" class="form-control col-md-7 col-xs-12" value="<%= order.description %>">
+            </div>
+          </div> 
+
+          <div class="form-group">
+            <label class="control-label col-xs-3" for="first-name">Thoughts (Reason)
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" name="order[reason]" id="reason" required="required" class="form-control col-md-7 col-xs-12" value="<%= order.reason %>">
+            </div>
+          </div> 
+
+
+          <div class="form-group">
+            <label class="control-label col-xs-3" for="first-name">Learnings
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" name="order[learning]" id="learning" required="required" class="form-control col-md-7 col-xs-12" value="<%= order.learning %>">
+            </div>
+          </div>  
+
+
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+              <button class="btn btn-primary" type="button">Cancel</button>
+              <button class="btn btn-primary" type="reset">Reset</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Result Type</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div id="result_type" class="btn-group" data-toggle="buttons">
+                <label class="btn <% if order.result_type == 'profit' %> btn-primary <% end %>" data-toggle-class="btn-primary" data-toggle-passive-class="">
+                  <input type="radio" name="order[result_type]" value="profit"> &nbsp; Profit &nbsp;
+                </label>
+                <label class="btn <% if order.result_type == 'loss' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="order[result_type]" value="loss"> Loss
+                </label>               
+              </div>
+            </div>
+          </div>          
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :order_type %>
-    <%= form.number_field :order_type %>
   </div>
-
-  <div class="field">
-    <%= form.label :odds_type %>
-    <%= form.number_field :odds_type %>
-  </div>
-
-  <div class="field">
-    <%= form.label :invested_amount %>
-    <%= form.text_field :invested_amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :invested_amount %>
-    <%= form.text_field :invested_amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :refund_amount %>
-    <%= form.text_field :refund_amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :refund_amount %>
-    <%= form.text_field :refund_amount %>
-  </div>
-
-  <div class="field">
-    <%= form.label :result_type %>
-    <%= form.number_field :result_type %>
-  </div>
-
-  <div class="field">
-    <%= form.label :game_id %>
-    <%= form.number_field :game_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :learning %>
-    <%= form.text_area :learning %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

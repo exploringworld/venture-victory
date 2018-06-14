@@ -55,8 +55,7 @@
 
           <div class="checkbox">
             <label>
-              <% puts series.completed %>
-              <% puts "sumit" %>
+              <input type="hidden" name="series[completed]" value=0 >
               <input type="checkbox" name="series[completed]" value=1 <% if series.completed %> checked='checked' <% end %>> Series Completed
             </label>
           </div>          

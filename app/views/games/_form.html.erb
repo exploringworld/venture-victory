@@ -15,12 +15,19 @@
               <% end %>
               </ul>
             </div>
-          <% end %>        
+          <% end %>     
+
+          <div class="form-group">
+            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Name</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="name" class="form-control col-md-7 col-xs-12" type="text" name="game[name]" value="<%= game.name %>">
+            </div>
+          </div>              
 
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Series</label>
             <div class="col-md-9 col-sm-9 col-xs-12">
-              <select class="select2_multiple form-control" name="games[series]" id="series">
+              <select class="select2_multiple form-control" name="game[series_id]" id="series_id">
                 <option value=""> Select Series </option>
                 <% @series.each do |s| %>
                   <option value=<%= s.id %> <% if s.id == game.series_id %> selected="selected" <% end %> > <%= s.name %></option>
@@ -32,7 +39,7 @@
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Venue</label>
             <div class="col-md-9 col-sm-9 col-xs-12">
-              <select class="select2_multiple form-control" name="games[series]" id="series">
+              <select class="select2_multiple form-control" name="game[venue_id]" id="venue_id">
                 <option value=""> Select Venue </option>    
                 <% @venues.each do |v| %>
                   <option value=<%= v.id %> <% if v.id == game.venue_id %> selected="selected" <% end %> > <%= v.name %></option>
@@ -42,9 +49,25 @@
           </div>
 
           <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Game Type</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div id="gender" class="btn-group" data-toggle="buttons">
+                <label class="btn <% if game.game_type == 'ODI' %> btn-primary <% end %>" data-toggle-class="btn-primary" data-toggle-passive-class="">
+                  <input type="radio" name="game[game_type]" value="ODI"> &nbsp; ODI &nbsp;
+                </label>
+                <label class="btn <% if game.game_type == 'T20' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="game[game_type]" value="T20"> T-20
+                </label> 
+                <label class="btn <% if game.game_type == 'TEST' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="game[game_type]" value="TEST"> Test
+                </label>                                
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">First Team</label>
             <div class="col-md-9 col-sm-9 col-xs-12">
-              <select class="select2_multiple form-control" name="games[first_team]" id="first_team">
+              <select class="select2_multiple form-control" name="game[first_team]" id="first_team">
                 <option value=""> Select First Team </option>
                 <% @teams.each do |t| %>
                   <option value=<%= t.id %> <% if t.id == game.first_team %> selected="selected" <% end %> > <%= t.name %></option>
@@ -56,7 +79,7 @@
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Second Team</label>
             <div class="col-md-9 col-sm-9 col-xs-12">
-              <select class="select2_multiple form-control" name="games[second_team]" id="second_team">
+              <select class="select2_multiple form-control" name="game[second_team]" id="second_team">
                 <option value=""> Select Second Team </option>
                 <% @teams.each do |t| %>
                   <option value=<%= t.id %> <% if t.id == game.second_team %> selected="selected" <% end %> > <%= t.name %></option>
@@ -68,26 +91,45 @@
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12">Home Team</label>
             <div class="col-md-9 col-sm-9 col-xs-12">
-              <select class="select2_multiple form-control" name="games[home_team]" id="home_team">
+              <select class="select2_multiple form-control" name="game[home_team]" id="home_team">
                 <option value=""> Select Home Team </option>
                 <% @teams.each do |t| %>
                   <option value=<%= t.id %> <% if t.id == game.home_team %> selected="selected" <% end %> > <%= t.name %></option>
                 <% end %>
               </select>
             </div>
-          </div>           
+          </div>    
+
+          <div class="form-group">
+            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Result</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="result" class="form-control col-md-7 col-xs-12" type="text" name="game[result]" value="<%= game.result %>">
+            </div>
+          </div>   
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Winning Team</label>
+            <div class="col-md-9 col-sm-9 col-xs-12">
+              <select class="select2_multiple form-control" name="game[winning_team]" id="winning_team">
+                <option value=""> Select Winning Team </option>
+                <% @teams.each do |t| %>
+                  <option value=<%= t.id %> <% if t.id == game.winning_team %> selected="selected" <% end %> > <%= t.name %></option>
+                <% end %>
+              </select>
+            </div>
+          </div>                   
 
           <div class="form-group">
             <label for="first_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">First Team Score</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="first_team_score" class="form-control col-md-7 col-xs-12" type="number" name="game[first_team_score]">
+              <input id="first_team_score" class="form-control col-md-7 col-xs-12" type="number" name="game[first_team_score]" value="<%= game.first_team_score %>">
             </div>
           </div>   
           
           <div class="form-group">
             <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Second Team Score</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="second_team_score" class="form-control col-md-7 col-xs-12" type="number" name="game[second_team_score]">
+              <input id="second_team_score" class="form-control col-md-7 col-xs-12" type="number" name="game[second_team_score]" value="<%= game.second_team_score %>">
             </div>
           </div>  
           
@@ -95,7 +137,7 @@
           <div class="form-group">
             <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">First Team Fours</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="first_inning_fours" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_fours]">
+              <input id="first_inning_fours" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_fours]" value="<%= game.first_inning_fours %>">
             </div>
           </div>  
           
@@ -103,21 +145,21 @@
           <div class="form-group">
             <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Second Team Fours</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="second_inning_fours" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_fours]">
+              <input id="second_inning_fours" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_fours]" value="<%= game.second_inning_fours %>">
             </div>
           </div>  
 
           <div class="form-group">
             <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">First Team Sixes</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="first_inning_sixes" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_sixes]">
+              <input id="first_inning_sixes" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_sixes]" value="<%= game.first_inning_sixes %>">
             </div>
           </div>  
 
           <div class="form-group">
             <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Second Team Sixes</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="second_inning_sixes" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_sixes]">
+              <input id="second_inning_sixes" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_sixes]" value="<%= game.second_inning_sixes %>">
             </div>
           </div>  
 
@@ -125,35 +167,93 @@
           <div class="form-group">
             <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">First Team Wickets</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="first_inning_wickets" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_wickets]">
+              <input id="first_inning_wickets" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_wickets]" value="<%= game.first_inning_wickets %>">
             </div>
           </div>  
 
           <div class="form-group">
             <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Second Team Wickets</label>
             <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="second_inning_wickets" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_wickets]">
+              <input id="second_inning_wickets" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_wickets]" value="<%= game.second_inning_wickets %>">
             </div>
           </div>  
 
-          <div class="form-group">
-            <label for="second_team_score" class="control-label col-md-3 col-sm-3 col-xs-12">Result</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
-              <input id="result" class="form-control col-md-7 col-xs-12" type="text" name="game[result]">
-            </div>
-          </div>   
+      <div class="form-group">
+        <label for="first_inning_six_over_runs" class="control-label col-md-3 col-sm-3 col-xs-12">First Inn 6 Overs Run</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <input id="first_inning_six_over_runs" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_six_over_runs]" value="<%= game.first_inning_six_over_runs %>">
+        </div>
+      </div> 
 
-          <div class="form-group">
-            <label class="control-label col-md-3 col-sm-3 col-xs-12">Winning Team</label>
-            <div class="col-md-9 col-sm-9 col-xs-12">
-              <select class="select2_multiple form-control" name="games[winning_team]" id="winning_team">
-                <% @teams.each do |t| %>
-                  <option value=""> Select Winning Team </option>
-                  <option value=<%= t.id %> <% if t.id == game.winning_team %> selected="selected" <% end %> > <%= t.name %></option>
-                <% end %>
-              </select>
-            </div>
-          </div>          
+      <div class="form-group">
+        <label for="first_inning_ten_over_runs" class="control-label col-md-3 col-sm-3 col-xs-12">First Inn 10 Overs Run</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <input id="first_inning_ten_over_runs" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_ten_over_runs]" value="<%= game.first_inning_ten_over_runs %>">
+        </div>
+      </div>       
+
+      <div class="form-group">
+        <label for="first_inning_twenty_over_runs" class="control-label col-md-3 col-sm-3 col-xs-12">First Inn 20 Overs Run</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <input id="first_inning_twenty_over_runs" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_twenty_over_runs]" value="<%= game.first_inning_twenty_over_runs %>">
+        </div>
+      </div>        
+
+      <div class="form-group">
+        <label for="first_inning_wides" class="control-label col-md-3 col-sm-3 col-xs-12">First Inn Wides</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <input id="first_inning_wides" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_wides]" value="<%= game.first_inning_wides %>">
+        </div>
+      </div>  
+
+      <div class="form-group">
+        <label for="first_inning_extras" class="control-label col-md-3 col-sm-3 col-xs-12">First Inn Total Extras</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <input id="first_inning_extras" class="form-control col-md-7 col-xs-12" type="number" name="game[first_inning_extras]" value="<%= game.first_inning_extras %>">
+        </div>
+      </div>  
+
+      <div class="form-group">
+        <label for="second_inning_six_over_runs" class="control-label col-md-3 col-sm-3 col-xs-12">Second Inn 6 Overs Run</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <input id="second_inning_six_over_runs" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_six_over_runs]" value="<%= game.second_inning_six_over_runs %>">
+        </div>
+      </div> 
+
+      <div class="form-group">
+        <label for="second_inning_ten_over_runs" class="control-label col-md-3 col-sm-3 col-xs-12">Second Inn 10 Overs Run</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <input id="second_inning_ten_over_runs" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_ten_over_runs]" value="<%= game.second_inning_ten_over_runs %>">
+        </div>
+      </div>       
+
+      <div class="form-group">
+        <label for="second_inning_twenty_over_runs" class="control-label col-md-3 col-sm-3 col-xs-12">Second Inn 20 Overs Run</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <input id="second_inning_twenty_over_runs" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_twenty_over_runs]" value="<%= game.second_inning_twenty_over_runs %>">
+        </div>
+      </div>        
+
+      <div class="form-group">
+        <label for="second_inning_wides" class="control-label col-md-3 col-sm-3 col-xs-12">Second Inn Wides</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <input id="second_inning_wides" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_wides]" value="<%= game.second_inning_wides %>">
+        </div>
+      </div>  
+
+      <div class="form-group">
+        <label for="second_inning_extras" class="control-label col-md-3 col-sm-3 col-xs-12">Second Inn Total Extras</label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <input id="second_inning_extras" class="form-control col-md-7 col-xs-12" type="number" name="game[second_inning_extras]" value="<%= game.second_inning_extras %>">
+        </div>
+      </div>    
+
+          <div class="checkbox">
+            <label>
+              <input type="hidden" name="game[completed]" value=0 >
+              <input type="checkbox" name="game[completed]" value=1 <% if game.completed %> checked='checked' <% end %>> Game Completed
+            </label>
+          </div>            
 
           <div class="ln_solid"></div>
           <div class="form-group">

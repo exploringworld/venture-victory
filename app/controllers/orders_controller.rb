@@ -15,17 +15,18 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @games = Game.last(10).reverse
   end
 
   # GET /orders/1/edit
   def edit
+    @games = Game.last(10).reverse
   end
 
   # POST /orders
   # POST /orders.json
   def create
     @order = Order.new(order_params)
-
     respond_to do |format|
       if @order.save
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -69,6 +70,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:order_type, :odds_type, :invested_amount, :invested_amount, :refund_amount, :refund_amount, :result_type, :game_id, :learning)
+      params.require(:order).permit(:order_type, :odds_type, :invested_amount, :invested_amount, :refund_amount, :refund_amount, :result_type, :game_id, :learning,:reason, :description)
     end
 end

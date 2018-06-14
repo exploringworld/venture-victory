@@ -25,12 +25,6 @@
               <th>Home team</th>
               <th>First team score</th>
               <th>Second team score</th>
-              <th>First inning fours</th>
-              <th>Second inning fours</th>
-              <th>First inning sixes</th>
-              <th>Second inning sixes</th>
-              <th>First inning wickets</th>
-              <th>Second inning wickets</th>
               <th>Result</th>
               <th>Winning team</th>
               <th colspan="3">Action</th>
@@ -39,23 +33,17 @@
           <tbody>
           <% @games.each do |game| %>            
             <tr>
-              <td><%= game.series_id %></td>
-              <td><%= game.venue_id %></td>
-              <td><%= game.match_type %></td>
-              <td><%= game.first_team %></td>
-              <td><%= game.second_team %></td>
-              <td><%= game.home_team %></td>
+              <td><%= Series.series_name(game.series_id) %></td>
+              <td><%= Venue.venue_name(game.venue_id) %></td>
+              <td><%= game.game_type %></td>
+              <td><%= Team.team_name(game.first_team) %></td>
+              <td><%= Team.team_name(game.second_team) %></td>
+              <td><%= Team.team_name(game.home_team) %></td>
               <td><%= game.first_team_score %></td>
               <td><%= game.second_team_score %></td>
-              <td><%= game.first_inning_fours %></td>
-              <td><%= game.second_inning_fours %></td>
-              <td><%= game.first_inning_sixes %></td>
-              <td><%= game.second_inning_sixes %></td>
-              <td><%= game.first_inning_wickets %></td>
-              <td><%= game.second_inning_wickets %></td>
               <td><%= game.result %></td>
-              <td><%= game.winning_team %></td>
-              <td><%= link_to 'Edit', edit_game_path(series) %></td>
+              <td><%= Team.team_name(game.winning_team) %></td>
+              <td><%= link_to 'Edit', edit_game_path(game) %></td>
               <td><%= link_to 'Destroy', game, method: :delete, data: { confirm: 'Are you sure?' } %></td>              
             </tr>
           <% end %>  
