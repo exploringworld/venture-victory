@@ -28,7 +28,7 @@ class LearningsController < ApplicationController
 
     respond_to do |format|
       if @learning.save
-        format.html { redirect_to @learning, notice: 'Learning was successfully created.' }
+        format.html { redirect_to learnings_path, notice: 'Learning was successfully created.' }
         format.json { render :show, status: :created, location: @learning }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class LearningsController < ApplicationController
   def update
     respond_to do |format|
       if @learning.update(learning_params)
-        format.html { redirect_to @learning, notice: 'Learning was successfully updated.' }
+        format.html { redirect_to learnings_path, notice: 'Learning was successfully updated.' }
         format.json { render :show, status: :ok, location: @learning }
       else
         format.html { render :edit }

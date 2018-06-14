@@ -1,37 +1,78 @@
-<%= form_with(model: learning, local: true) do |form| %>
-  <% if learning.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(learning.errors.count, "error") %> prohibited this learning from being saved:</h2>
+<div class="clearfix"></div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_content">
+        <br />
+        <%= form_with(model: learning, local: true, id: 'demo-form2', class: 'form-horizontal form-label-left') do |form| %>
+          <% if learning.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(learning.errors.count, "error") %> prohibited this learning from being saved:</h2>
 
-      <ul>
-      <% learning.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+              <ul>
+              <% learning.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>        
+          <div class="form-group">
+            <label class="control-label col-xs-3" for="first-name">Name <span class="required">*</span>
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" name="learning[name]" id="name" required="required" class="form-control col-md-7 col-xs-12" value="<%= learning.name %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-xs-3" for="first-name">Details 
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" name="learning[description]" id="description" required="required" class="form-control col-md-7 col-xs-12" value="<%= learning.description %>">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-xs-3" for="first-name">Validated Times 
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" name="learning[validated_times]" id="name" required="required" class="form-control col-md-7 col-xs-12" value="<%= learning.validated_times %>">
+            </div>
+          </div>   
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Importance</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div id="importance" class="btn-group" data-toggle="buttons">
+                <label class="btn <% if learning.importance == 'five_star' %> btn-primary <% end %>" data-toggle-class="btn-primary" data-toggle-passive-class="">
+                  <input type="radio" name="learning[importance]" value="five_star"> &nbsp; Five Star &nbsp;
+                </label>
+                <label class="btn <% if learning.importance == 'four_star' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="learning[importance]" value="four_star"> Four Star
+                </label>   
+                <label class="btn <% if learning.importance == 'three_star' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="learning[importance]" value="three_star"> Three Star
+                </label> 
+                <label class="btn <% if learning.importance == 'two_star' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="learning[importance]" value="two_star"> Two Star
+                </label> 
+                <label class="btn <% if learning.importance == 'one_star' %> btn-primary <% end %>" data-toggle-class="" data-toggle-passive-class="btn-default">
+                  <input type="radio" name="learning[importance]" value="one_star"> One Star
+                </label>                                                             
+              </div>
+            </div>
+          </div>
+                                     
+          <div class="ln_solid"></div>
+          <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+              <button class="btn btn-primary" type="button">Cancel</button>
+              <button class="btn btn-primary" type="reset">Reset</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_area :name %>
   </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :validated_times %>
-    <%= form.number_field :validated_times %>
-  </div>
-
-  <div class="field">
-    <%= form.label :importance %>
-    <%= form.number_field :importance %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
